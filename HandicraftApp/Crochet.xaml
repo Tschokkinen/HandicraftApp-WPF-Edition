@@ -65,7 +65,7 @@
         </Grid.RowDefinitions>
 
 
-        <!--People list -->
+        <!--Item list -->
         <Label Grid.Column="0" Style="{StaticResource headerTextStyle}" HorizontalAlignment="Center">
             Virkkaus
         </Label>
