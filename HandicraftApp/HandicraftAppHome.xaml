@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HandicraftApp"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="500"
+      d:DesignHeight="350" d:DesignWidth="600"
       Title="Käsityöhässäkkä">
 
     <Grid Margin="10,0,10,10">
@@ -34,5 +34,7 @@
         </Label>
         <Button Content="Virkkaus" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Virkkaus" Margin="38,10,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
         <Button Content="Kudonta" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Kudonta" Margin="38,40,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
+        <Button Content="Ompelu" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Ompelu" Margin="38,70,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
+        <Button Content="Sekalaiset" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Sekalaiset" Margin="38,100,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
     </Grid>
 </Page>

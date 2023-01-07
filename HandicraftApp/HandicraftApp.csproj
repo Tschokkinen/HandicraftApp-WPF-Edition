@@ -30,4 +30,10 @@
     <PackageReference Include="System.Data.SQLite" Version="1.0.117" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="AddItem.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>

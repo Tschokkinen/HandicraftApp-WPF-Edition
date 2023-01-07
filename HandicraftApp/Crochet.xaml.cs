@@ -25,6 +25,7 @@ namespace HandicraftApp
         public ObservableCollection<Item> MyItems = new ObservableCollection<Item>();
         Item? selected;
         List<Item> items = new List<Item>();
+        private string origin = "crochet";
 
         public Crochet()
         {
@@ -51,7 +52,7 @@ namespace HandicraftApp
                     SelectedLabel.Content = "Virkkuulangat";
                     break;
                 case "Add":
-                    var add = new Add();
+                    var add = new AddItem(origin);
                     add.ShowDialog();
                     break;
                 case "Remove":
