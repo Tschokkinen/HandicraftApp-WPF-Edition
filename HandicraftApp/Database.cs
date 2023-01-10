@@ -171,6 +171,7 @@ namespace HandicraftApp
             }
         }
 
+        // REDUNDANT
         // Gets table data with ids and presents it according to the table columns.
         // Used when removing an entry from database.
         //public static void GetTableDataWithId(string tableName)
