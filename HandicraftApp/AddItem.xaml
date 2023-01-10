@@ -9,7 +9,8 @@
       Title="Käsityöhässäkkä - Lisää uusi">
 
     <Window.Resources>
-        <src:TextBoxValidation x:Key="data"/>
+        <src:TextBoxValidation x:Key="textBoxValidation"/>
+        <src:AddItem x:Key="test" />
     </Window.Resources>
 
     <Grid Margin="10,0,10,10" HorizontalAlignment="Center">
@@ -48,7 +49,7 @@
                     <Label x:Name="TextBox1_Label" Style="{StaticResource textBoxLabelStyle}">TextBox1:</Label>
                     <TextBox x:Name="TextBox1" Tag="TextBox1" Style="{StaticResource textBoxInError}" HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" >
                         <TextBox.Text>
-                            <Binding Path="TextBoxOne" Source="{StaticResource data}" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="TextBoxOne" Source="{StaticResource textBoxValidation}" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <DataErrorValidationRule/>
                                 </Binding.ValidationRules>
@@ -61,7 +62,7 @@
                     <Label x:Name="TextBox2_Label" Style="{StaticResource textBoxLabelStyle}">TextBox2:</Label>
                     <TextBox x:Name="TextBox2" Tag="TextBox2" Style="{StaticResource textBoxInError}" HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120" >
                         <TextBox.Text>
-                            <Binding Path="TextBoxTwo" Source="{StaticResource data}" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="TextBoxTwo" Source="{StaticResource textBoxValidation}" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <DataErrorValidationRule/>
                                 </Binding.ValidationRules>
@@ -75,7 +76,7 @@
                     <Label x:Name="TextBox3_Label" Style="{StaticResource textBoxLabelStyle}">TextBox3:</Label>
                     <TextBox x:Name="TextBox3" Tag="TextBox3" Style="{StaticResource textBoxInError}" HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120">
                         <TextBox.Text>
-                            <Binding Path="TextBoxThree" Source="{StaticResource data}" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="TextBoxThree" Source="{StaticResource textBoxValidation}" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <DataErrorValidationRule/>
                                 </Binding.ValidationRules>
@@ -88,7 +89,7 @@
                     <Label x:Name="TextBox4_Label" Style="{StaticResource textBoxLabelStyle}">TextBox4:</Label>
                     <TextBox x:Name="TextBox4" Tag="TextBox4" Style="{StaticResource textBoxInError}" HorizontalAlignment="Left" Margin="0" TextWrapping="Wrap" VerticalAlignment="Center" Width="120">
                         <TextBox.Text>
-                            <Binding Path="TextBoxFour" Source="{StaticResource data}" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged">
+                            <Binding Path="TextBoxFour" Source="{StaticResource textBoxValidation}" ValidatesOnExceptions="True" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
                                     <DataErrorValidationRule/>
                                 </Binding.ValidationRules>

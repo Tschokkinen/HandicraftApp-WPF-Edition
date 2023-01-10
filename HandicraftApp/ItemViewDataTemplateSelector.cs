@@ -19,11 +19,11 @@ namespace HandicraftApp
 
                 if (currentItem.TableName == "crochetHooks")
                 {
-                    return element.FindResource("nameItemTemplate") as DataTemplate;
+                    return element.FindResource("crochetHooksTemplate") as DataTemplate;
                 }
                 else if (currentItem.TableName == "crochetThreads")
                 {
-                    return element.FindResource("second") as DataTemplate;
+                    return element.FindResource("crochetThreadsTemplate") as DataTemplate;
                 }
             }
             return null;

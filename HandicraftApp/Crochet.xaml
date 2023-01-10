@@ -15,7 +15,7 @@
 
         <Grid.Resources>
             <!-- Name item template -->
-            <DataTemplate x:Key="nameItemTemplate">
+            <DataTemplate x:Key="crochetHooksTemplate">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5, 0, 5, 0">
                         <Run FontWeight="Bold">Koko:</Run>
@@ -28,7 +28,7 @@
                 </StackPanel>
             </DataTemplate>
 
-            <DataTemplate x:Key="second">
+            <DataTemplate x:Key="crochetThreadsTemplate">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Margin="5, 0, 5, 0">
                         <Run FontWeight="Bold">Koko:</Run>

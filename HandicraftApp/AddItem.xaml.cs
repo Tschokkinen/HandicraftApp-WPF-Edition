@@ -139,7 +139,11 @@ namespace HandicraftApp
                     }
                     textBox2 = TextBox2.Text.ToString();
 
-                    if (textBox1 == "" || textBox2 == "") return;
+                    if (textBox1 == "" || textBox2 == "")
+                    {
+                        DisplayEmptyFieldMessage();
+                        return;
+                    }
 
                     //Debug.WriteLine("size " + textBox1);
                     tableEntry = $"INSERT INTO crochetHooks (id, size, material) values (NULL, {textBox1}, '{textBox2}')";
@@ -155,7 +159,11 @@ namespace HandicraftApp
                     textBox2 = TextBox2.Text.ToString();
                     textBox3 = TextBox3.Text.ToString();
 
-                    if (textBox1 == "" || textBox2 == "" || textBox3 == "") return;
+                    if (textBox1 == "" || textBox2 == "" || textBox3 == "")
+                    {
+                        DisplayEmptyFieldMessage();
+                        return;
+                    }
 
                     tableEntry = $"INSERT INTO crochetThreads (id, size, material, colour) values (NULL, {textBox1}, '{textBox2}', '{textBox3}')";
                     Database.AddTableEntry(tableEntry);
@@ -165,6 +173,11 @@ namespace HandicraftApp
                     DialogResult = true;
                     break;
             }
+        }
+
+        private void DisplayEmptyFieldMessage()
+        {
+            MessageBox.Show("Tyhjä kenttä", "EMPTY", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
     }
 }
