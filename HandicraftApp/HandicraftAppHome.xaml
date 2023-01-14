@@ -32,9 +32,9 @@
         <Label Grid.Column="0" Style="{StaticResource headerTextStyle}" HorizontalAlignment="Center">
             Käsityöhässäkkä
         </Label>
-        <Button Content="Virkkaus" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Virkkaus" Margin="38,10,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
+        <Button Content="Virkkaus" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Crochet" Margin="38,10,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
         <Button Content="Kudonta" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Kudonta" Margin="38,40,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
-        <Button Content="Ompelu" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Ompelu" Margin="38,70,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
-        <Button Content="Sekalaiset" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Sekalaiset" Margin="38,100,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
+        <Button Content="Ompelu" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Sewing" Margin="38,70,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
+        <Button Content="Sekalaiset" Style="{StaticResource buttonStyle}" Grid.Row="2" Click="Button_Click" Tag="Misc" Margin="38,100,37,0" VerticalAlignment="Top" Width="125" Height="25"/>
     </Grid>
 </Page>

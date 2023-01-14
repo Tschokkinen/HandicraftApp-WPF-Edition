@@ -100,8 +100,9 @@
             </StackPanel>
 
             <StackPanel x:Name="TypeName_Stack" Grid.Column="0" Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Center">
-                <Button x:Name="TypeName_Button1" Content="Button1" Tag="" HorizontalAlignment="Center" Margin="5" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click"/>
-                <Button x:Name="TypeName_Button2" Content="Button2" Tag="" HorizontalAlignment="Center" Margin="5" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click"/>
+                <Button x:Name="TypeName_Button1" Content="Button1" Tag="" HorizontalAlignment="Center" Margin="5" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click" Visibility="Visible"/>
+                <Button x:Name="TypeName_Button2" Content="Button2" Tag="" HorizontalAlignment="Center" Margin="5" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click" Visibility="Visible"/>
+                <Button x:Name="TypeName_Button3" Content="Button3" Tag="" HorizontalAlignment="Center" Margin="5" Grid.Row="1" VerticalAlignment="Top" Click="Button_Click" Visibility="Visible"/>
                 <Button x:Name="CancelButton" Content="Peruuta" Tag="Cancel" Click="Button_Click" HorizontalAlignment="Center" Margin="5" VerticalAlignment="Top" Visibility="Visible"/>
             </StackPanel>
 

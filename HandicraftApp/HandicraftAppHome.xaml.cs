@@ -37,9 +37,13 @@ namespace HandicraftApp
 
             switch(buttonTag)
             {
-                case "Virkkaus":
+                case "Crochet":
                     Crochet crochet = new Crochet();
                     this.NavigationService.Navigate(crochet);
+                    break;
+                case "Sewing":
+                    Sewing sewing = new Sewing();
+                    this.NavigationService.Navigate(sewing);
                     break;
             }
         }

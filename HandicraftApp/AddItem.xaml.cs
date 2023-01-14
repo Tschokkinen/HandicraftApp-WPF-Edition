@@ -55,10 +55,24 @@ namespace HandicraftApp
             switch (origin)
             {
                 case "crochet":
+                    TypeName_Button1.Visibility = Visibility.Visible;
                     TypeName_Button1.Content = "Virkkuukoukku";
                     TypeName_Button1.Tag = "crochetHooks";
+                    TypeName_Button2.Visibility = Visibility.Visible;
                     TypeName_Button2.Content = "Virkkuulanka";
                     TypeName_Button2.Tag = "crochetThreads";
+                    TypeName_Button3.Visibility = Visibility.Collapsed;
+                    break;
+                case "sewing":
+                    TypeName_Button1.Visibility = Visibility.Visible;
+                    TypeName_Button1.Content = "Ompelulanka";
+                    TypeName_Button1.Tag = "sewingThreads";
+                    TypeName_Button2.Visibility = Visibility.Visible;
+                    TypeName_Button2.Content = "Kaava";
+                    TypeName_Button2.Tag = "sewingPatterns";
+                    TypeName_Button3.Visibility = Visibility.Visible;
+                    TypeName_Button3.Content = "Kangas";
+                    TypeName_Button3.Tag = "sewingFabrics";
                     break;
             }
         }
@@ -70,7 +84,7 @@ namespace HandicraftApp
 
             switch (buttonTag) 
             {
-                case "Save": // NOTE TO SELF: CHECK FOR EMPTY TEXT BOXES!
+                case "Save":
                     Save();
                     break;
                 case "Back":
@@ -106,6 +120,20 @@ namespace HandicraftApp
                     TextBox1_Stack.Visibility = Visibility.Visible;
                     TextBox2_Stack.Visibility = Visibility.Visible;
                     TextBox3_Stack.Visibility = Visibility.Visible;
+                    TextBox4_Stack.Visibility = Visibility.Collapsed;
+                    TextBox_Stack.Visibility = Visibility.Visible;
+                    TypeName_Stack.Visibility = Visibility.Collapsed;
+                    BackButton.Visibility = Visibility.Visible;
+                    CancelButton.Visibility = Visibility.Collapsed;
+                    SaveButton.Visibility = Visibility.Visible;
+                    break;
+                case "sewingThreads":
+                    selection = buttonTag;
+                    TextBox1_Label.Content = "Väri";
+                    TextBox2_Label.Content = "Lisätietoja";
+                    TextBox1_Stack.Visibility = Visibility.Visible;
+                    TextBox2_Stack.Visibility = Visibility.Visible;
+                    TextBox3_Stack.Visibility = Visibility.Collapsed;
                     TextBox4_Stack.Visibility = Visibility.Collapsed;
                     TextBox_Stack.Visibility = Visibility.Visible;
                     TypeName_Stack.Visibility = Visibility.Collapsed;
@@ -166,6 +194,29 @@ namespace HandicraftApp
                     }
 
                     tableEntry = $"INSERT INTO crochetThreads (id, size, material, colour) values (NULL, {textBox1}, '{textBox2}', '{textBox3}')";
+                    Database.AddTableEntry(tableEntry);
+                    DialogResult = true;
+                    break;
+                case "sewingThreads":
+                    textBox1 = TextBox1.Text.ToString();
+                    if (textBox1.Contains(','))
+                    {
+                        textBox1 = textBox1.Replace(',', '.');
+                    }
+                    textBox2 = TextBox2.Text.ToString();
+
+                    if (textBox1 == "")
+                    {
+                        DisplayEmptyFieldMessage();
+                        return;
+                    }
+
+                    if (textBox2 == "")
+                    {
+                        textBox2 = "-";
+                    }
+
+                    tableEntry = $"INSERT INTO sewingThreads (id, colour, optionalInfo) values (NULL, '{textBox1}', '{textBox2}')";
                     Database.AddTableEntry(tableEntry);
                     DialogResult = true;
                     break;

@@ -25,6 +25,10 @@ namespace HandicraftApp
                 {
                     return element.FindResource("crochetThreadsTemplate") as DataTemplate;
                 }
+                else if (currentItem.TableName == "sewingThreads")
+                {
+                    return element.FindResource("sewingThreadsTemplate") as DataTemplate;
+                }
             }
             return null;
             //return base.SelectTemplate(item, container);

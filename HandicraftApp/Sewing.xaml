@@ -1,0 +1,105 @@
+﻿<Page x:Class="HandicraftApp.Sewing"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HandicraftApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="350" d:DesignWidth="600"
+      Title="Käsityöhässäkkä">
+    <Page.Resources>
+        <local:ItemViewDataTemplateSelector x:Key="itemViewDataTemplateSelector" />
+    </Page.Resources>
+
+    <Grid Margin="10,0,10,10">
+
+        <Grid.Resources>
+            <!-- Name item template -->
+            <DataTemplate x:Key="sewingThreadsTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column2" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column3" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column4" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Margin="5, 0, 5, 0">
+                        <Run FontWeight="Bold">Väri:</Run>
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" Text="{Binding Colour}" Margin="5, 0, 5, 0" />
+                        <TextBlock Grid.Column="2" Margin="5, 0, 5, 0">
+                        <Run FontWeight="Bold">Lisätietoja:</Run>
+                        </TextBlock>
+                        <TextBlock Grid.Column="3" Text="{Binding OptionalInfo}" Margin="5, 0, 5, 0"/>
+                    </Grid>
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="crochetThreadsTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column2" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column3" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column4" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column5" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column6" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Margin="5, 0, 5, 0">
+                        <Run FontWeight="Bold">Koko:</Run>
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" Text="{Binding Size}" Margin="5, 0, 5, 0" />
+                        <TextBlock Grid.Column="2" Margin="5, 0, 5, 0">
+                        <Run FontWeight="Bold">Materiaali:</Run>
+                        </TextBlock>
+                        <TextBlock Grid.Column="3" Text="{Binding Material}" Margin="5, 0, 5, 0"/>
+                        <TextBlock Grid.Column="4" Margin="5, 0, 5, 0">
+                        <Run FontWeight="Bold">Väri:</Run>
+                        </TextBlock>
+                        <TextBlock Grid.Column="5" Text="{Binding Colour}" Margin="5, 0, 5, 0"/>
+                    </Grid>
+                </StackPanel>
+            </DataTemplate>
+        </Grid.Resources>
+
+
+        <!--
+        <Grid.Background>
+            <ImageBrush ImageSource="background.jpg"/>
+        </Grid.Background>
+        -->
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="35" />
+            <RowDefinition />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+
+
+        <!--Item list -->
+        <Label Grid.Column="0" Style="{StaticResource headerTextStyle}" HorizontalAlignment="Center">
+            Ompelu
+        </Label>
+        <Button Content="Langat" Grid.Row="2" Style="{StaticResource buttonStyle}" Click="Button_Click" Tag="Threads" VerticalAlignment="Top" Margin="38,10,37,0" />
+        <Button Content="Kaavat" Grid.Row="2" Style="{StaticResource buttonStyle}" Click="Button_Click" Tag="Patterns" VerticalAlignment="Top" Margin="38,40,37,0"/>
+        <Button Content="Kankaat" Grid.Row="2" Style="{StaticResource buttonStyle}" Click="Button_Click" Tag="Fabrics" VerticalAlignment="Top" Margin="38,70,37,0"/>
+        <Button Content="Lisää uusi" Grid.Row="2" Style="{StaticResource buttonStyle}" Click="Button_Click" Tag="Add" VerticalAlignment="Top" Margin="38, 100, 37, 0" />
+        <Button Content="Poista tieto" Grid.Row="2" Style="{StaticResource buttonStyle}" Click="Button_Click" Tag="Remove" VerticalAlignment="Top" Margin="38, 130, 37, 0" />
+        <Border Grid.Column="1" Grid.Row="1" Style="{StaticResource itemListHeaderStyle}">
+            <Label x:Name="SelectedLabel" Style="{StaticResource listBoxHeaderTextStyle}">Ei valintaa</Label>
+        </Border>
+
+        <ListBox Grid.IsSharedSizeScope="True" x:Name="SewingBox" SelectionMode="Single" Grid.Column="1" Grid.Row="2" ItemsSource="{Binding}"
+                 ItemTemplateSelector="{StaticResource itemViewDataTemplateSelector}" SelectionChanged="sewing_SelectionChanged" IsSynchronizedWithCurrentItem="True">
+        </ListBox>
+    </Grid>
+</Page>
+
