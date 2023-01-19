@@ -26,7 +26,7 @@ namespace HandicraftApp
         public ObservableCollection<Item> MyItems = new ObservableCollection<Item>();
         Item? selected;
         List<Item> items = new List<Item>();
-        private string origin = "sewing";
+        private Origins origin = Origins.Sewing;
 
         public Sewing()
         {
@@ -65,8 +65,8 @@ namespace HandicraftApp
                 case "Remove":
                     if (selected != null)
                     {
-                        Database.RemoveTableData(selected.TableName, selected.Id);
-                        MyItems.Remove(selected);
+                        //Database.RemoveTableData(selected.TableName, selected.Id);
+                        //MyItems.Remove(selected);
                     }
                     break;
                 default:

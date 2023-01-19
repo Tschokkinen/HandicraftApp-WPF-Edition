@@ -15,13 +15,15 @@ namespace HandicraftApp
         public static void CreateDatabase()
         {
             //Table list.
-            var tableNames = new List<string>();
-            tableNames.Add("crochetHooks");
-            tableNames.Add("crochetThreads");
-            //tableNames.Add("misc");
-            tableNames.Add("sewingFabrics");
-            tableNames.Add("sewingThreads");
-            tableNames.Add("sewingPatterns");
+            var tableNames = new List<string>
+            {
+                "crochetHooks",
+                "crochetThreads",
+                "sewingFabrics",
+                "sewingThreads",
+                "sewingPatterns",
+                "misc"
+            };
 
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
             {
@@ -131,32 +133,22 @@ namespace HandicraftApp
                             switch (tableName)
                             {
                                 case "sewingPatterns":
-                                    Debug.WriteLine($"Kaavan malli: {reader["patternModel"]} / Kaavan koot: {reader["patternSizes"]} / Lisätietoja: {reader["optionalInfo"]}");
-                                    Debug.WriteLine("- - - - - -");
                                     item = new Item((long)reader["id"], reader["patternModel"].ToString(), reader["patternSizes"].ToString(), reader["optionalInfo"].ToString(), tableName);
                                     items.Add(item);
                                     break;
                                 case "sewingFabrics":
-                                    Debug.WriteLine($"Kankaan luokka: {reader["mainType"]} / Alaluokka: {reader["subType"]} / Koko: Leveys {reader["width"]}cm - Korkeus {reader["height"]}cm");
-                                    Debug.WriteLine("- - - - - -");
                                     item = new Item((long)reader["id"], reader["mainType"].ToString(), reader["subType"].ToString(), (double)reader["width"], (double)reader["height"], tableName);
                                     items.Add(item);
                                     break;
                                 case "sewingThreads":
-                                    Debug.WriteLine($"Väri: {reader["colour"]} / Lisätietoja: {reader["optionalInfo"]} / {tableName}");
-                                    Debug.WriteLine("- - - - - -");
                                     item = new Item((long)reader["id"], reader["colour"].ToString(), reader["optionalInfo"].ToString(), tableName);
                                     items.Add(item);
                                     break;
                                 case "crochetHooks":
-                                    Debug.WriteLine($"Size: {reader["size"]} / Material: {reader["material"]}");
-                                    Debug.WriteLine("- - - - - -");
                                     item = new Item((long)reader["id"], (double) reader["size"], reader["material"].ToString(), tableName);
                                     items.Add(item);
                                     break;
                                 case "crochetThreads":
-                                    Debug.WriteLine($"Koko: {reader["size"]} / Materiaali: {reader["material"]} / Väri: {reader["colour"]}");
-                                    Debug.WriteLine("- - - - - -");
                                     item = new Item((long)reader["id"], (double)reader["size"], reader["material"].ToString(), reader["colour"].ToString(), tableName);
                                     items.Add(item);
                                     break;
@@ -183,7 +175,6 @@ namespace HandicraftApp
                 connection.Open();
 
                 string query = $"DELETE FROM {tableName} WHERE id = '{id}'";
-                //string query = $"DELETE FROM {tableName} WHERE id = '3'";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(query, connection))
                 {

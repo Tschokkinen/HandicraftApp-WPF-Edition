@@ -25,7 +25,7 @@ namespace HandicraftApp
 
     public partial class AddItem : Window
     {
-        private string? Origin { get; set; }
+        private Origins Origin { get; set; }
 
         string? selection;
 
@@ -34,7 +34,7 @@ namespace HandicraftApp
 
         }
 
-        public AddItem(string origin)
+        public AddItem(Origins origin)
         {
             InitializeComponent();
             this.Origin = origin;
@@ -50,11 +50,11 @@ namespace HandicraftApp
         }
 
         // Set button titles according to AddItem instantiator.
-        private void SetScene(string origin)
+        private void SetScene(Origins origin)
         {
             switch (origin)
             {
-                case "crochet":
+                case Origins.Crochet:
                     TypeName_Button1.Visibility = Visibility.Visible;
                     TypeName_Button1.Content = "Virkkuukoukku";
                     TypeName_Button1.Tag = "crochetHooks";
@@ -63,7 +63,7 @@ namespace HandicraftApp
                     TypeName_Button2.Tag = "crochetThreads";
                     TypeName_Button3.Visibility = Visibility.Collapsed;
                     break;
-                case "sewing":
+                case Origins.Sewing:
                     TypeName_Button1.Visibility = Visibility.Visible;
                     TypeName_Button1.Content = "Ompelulanka";
                     TypeName_Button1.Tag = "sewingThreads";

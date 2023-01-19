@@ -20,8 +20,6 @@ namespace HandicraftApp
         public string? SubType { get; set; }
         public double? Width { get; set; }
         public double? Height { get; set; }
-
-
         public string? TableName { get; set; }
 
         public Item(long id, double size, string material, string tableName)

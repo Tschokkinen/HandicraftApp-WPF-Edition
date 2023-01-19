@@ -25,7 +25,7 @@ namespace HandicraftApp
         public ObservableCollection<Item> MyItems = new ObservableCollection<Item>();
         Item? selected;
         List<Item> items = new List<Item>();
-        private string origin = "crochet";
+        private Origins origin = Origins.Crochet;
 
         public Crochet()
         {

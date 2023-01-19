@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,10 +29,6 @@ namespace HandicraftApp
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            // View Expense Report
-            // Misc oli siis uusi sivu!
-            //Misc misc = new Misc(this.peopleListBox.SelectedItem);
-            //this.NavigationService.Navigate(misc);
             Button button = ((Button)sender);
             string? buttonTag = button.Tag as string;
 
