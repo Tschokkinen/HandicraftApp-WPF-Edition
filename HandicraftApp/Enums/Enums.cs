@@ -1,4 +1,4 @@
-﻿namespace HandicraftApp
+﻿namespace HandicraftApp.Enums
 {
     public enum Origins
     {
@@ -12,11 +12,13 @@
         CrochetHooks,
         SewingFabrics,
         SewingThreads,
-        SewingPatterns
+        SewingPatterns,
+        Misc
     }
 
     public enum ButtonTags
     {
         Crochet
     }
+
 }

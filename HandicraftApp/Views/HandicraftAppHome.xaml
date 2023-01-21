@@ -6,7 +6,7 @@
       xmlns:sys="clr-namespace:System;assembly=mscorlib" 
       xmlns:local="clr-namespace:HandicraftApp"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="600"
+      d:DesignHeight="350" d:DesignWidth="800"
       Title="Käsityöhässäkkä">
 
     <Grid Margin="10,0,10,10">

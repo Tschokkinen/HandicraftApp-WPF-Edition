@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using HandicraftApp.Models;
+using HandicraftApp.Enums;
 
 namespace HandicraftApp
 {
@@ -41,13 +43,13 @@ namespace HandicraftApp
             {
                 case "Hooks":
                     items.Clear();
-                    items = Database.GetTableData("crochetHooks", "SELECT * FROM crochetHooks");
+                    items = Database.GetTableData(TableNames.CrochetHooks);
                     UpdateListBox(items);
                     SelectedLabel.Content = "Virkkuukoukut";
                     break;
                 case "Threads":
                     items.Clear();
-                    items = Database.GetTableData("crochetThreads", "SELECT * FROM crochetThreads");
+                    items = Database.GetTableData(TableNames.CrochetThreads);
                     UpdateListBox(items);
                     SelectedLabel.Content = "Virkkuulangat";
                     break;
@@ -56,7 +58,7 @@ namespace HandicraftApp
                     add.ShowDialog();
                     break;
                 case "Remove":
-                    if(selected != null)
+                    if (selected != null)
                     {
                         Database.RemoveTableData(selected.TableName, selected.Id);
                         MyItems.Remove(selected);

@@ -8,13 +8,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="NewFolder\**" />
-    <EmbeddedResource Remove="NewFolder\**" />
-    <None Remove="NewFolder\**" />
-    <Page Remove="NewFolder\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Remove="background.jpg" />
   </ItemGroup>
 
@@ -31,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="AddItem.xaml.cs">
+    <Compile Update="Views\AddItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

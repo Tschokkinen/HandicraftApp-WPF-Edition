@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using System.IO;
 using System.Diagnostics;
+using HandicraftApp.Models;
+using HandicraftApp.Enums;
 
 namespace HandicraftApp
 {
@@ -15,21 +17,21 @@ namespace HandicraftApp
         public static void CreateDatabase()
         {
             //Table list.
-            var tableNames = new List<string>
+            var tableNames = new List<TableNames>
             {
-                "crochetHooks",
-                "crochetThreads",
-                "sewingFabrics",
-                "sewingThreads",
-                "sewingPatterns",
-                "misc"
+                TableNames.CrochetHooks,
+                TableNames.CrochetThreads,
+                TableNames.SewingThreads,
+                TableNames.SewingFabrics,
+                TableNames.SewingPatterns,
+                TableNames.Misc
             };
 
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
             {
                 connection.Open(); //Open database connection.
 
-                foreach (string tableName in tableNames)
+                foreach (TableNames tableName in tableNames)
                 {
                     string query = $"SELECT name FROM sqlite_master WHERE type='table' AND name='{tableName}'";
                     string tableData = "";
@@ -43,30 +45,30 @@ namespace HandicraftApp
                             {
                                 switch (tableName)
                                 {
-                                    case "sewingPatterns":
+                                    case TableNames.SewingPatterns:
                                         tableData = $"CREATE TABLE {tableName} (id INTEGER PRIMARY KEY, patternModel VARCHAR(20), patternSizes VARCHAR(20), optionalInfo VARCHAR(20))";
                                         CreateTable(tableData, connection);
                                         break;
-                                    case "sewingFabrics":
+                                    case TableNames.SewingFabrics:
                                         tableData = $"CREATE TABLE {tableName} (id INTEGER PRIMARY KEY, mainType VARCHAR(20), subType VARCHAR(20), width REAL, height REAL)";
                                         CreateTable(tableData, connection);
                                         break;
-                                    case "sewingThreads":
+                                    case TableNames.SewingThreads:
                                         tableData = $"CREATE TABLE {tableName} (id INTEGER PRIMARY KEY, colour VARCHAR(20), optionalInfo VARCHAR(20))";
                                         CreateTable(tableData, connection);
                                         break;
-                                    case "crochetHooks":
+                                    case TableNames.CrochetHooks:
                                         tableData = $"CREATE TABLE {tableName} (id INTEGER PRIMARY KEY, size REAL, material VARCHAR(20))";
                                         CreateTable(tableData, connection);
                                         break;
-                                    case "crochetThreads":
+                                    case TableNames.CrochetThreads:
                                         tableData = $"CREATE TABLE {tableName} (id INTEGER PRIMARY KEY, size REAL, material VARCHAR(20), colour VARCHAR(20))";
                                         CreateTable(tableData, connection);
                                         break;
-                                        //case "misc":
-                                        //    tableData = $"CREATE TABLE {tableName} (id VARCHAR(20) PRIMARY KEY, name VARCHAR(20), optionalInfo VARCHAR(20))";
-                                        //    CreateTable(tableData, connection);
-                                        //    break;
+                                    case TableNames.Misc:
+                                        tableData = $"CREATE TABLE {tableName} (id VARCHAR(20) PRIMARY KEY, name VARCHAR(20), optionalInfo VARCHAR(20))";
+                                        CreateTable(tableData, connection);
+                                        break;
                                 }
                                 try
                                 {
@@ -114,10 +116,11 @@ namespace HandicraftApp
 
         // Gets table data and presents it according to the table columns.
         // Used when showing data from database.
-        public static List<Item> GetTableData(string tableName, string query)
+        public static List<Item> GetTableData(TableNames tableName)
         {
             Item item;
             var items = new List<Item>();
+            string query = $"SELECT * FROM {tableName}";
 
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
             {
@@ -132,23 +135,23 @@ namespace HandicraftApp
                         {
                             switch (tableName)
                             {
-                                case "sewingPatterns":
+                                case TableNames.SewingPatterns:
                                     item = new Item((long)reader["id"], reader["patternModel"].ToString(), reader["patternSizes"].ToString(), reader["optionalInfo"].ToString(), tableName);
                                     items.Add(item);
                                     break;
-                                case "sewingFabrics":
+                                case TableNames.SewingFabrics:
                                     item = new Item((long)reader["id"], reader["mainType"].ToString(), reader["subType"].ToString(), (double)reader["width"], (double)reader["height"], tableName);
                                     items.Add(item);
                                     break;
-                                case "sewingThreads":
+                                case TableNames.SewingThreads:
                                     item = new Item((long)reader["id"], reader["colour"].ToString(), reader["optionalInfo"].ToString(), tableName);
                                     items.Add(item);
                                     break;
-                                case "crochetHooks":
+                                case TableNames.CrochetHooks:
                                     item = new Item((long)reader["id"], (double) reader["size"], reader["material"].ToString(), tableName);
                                     items.Add(item);
                                     break;
-                                case "crochetThreads":
+                                case TableNames.CrochetThreads:
                                     item = new Item((long)reader["id"], (double)reader["size"], reader["material"].ToString(), reader["colour"].ToString(), tableName);
                                     items.Add(item);
                                     break;
@@ -168,7 +171,7 @@ namespace HandicraftApp
         }
 
         // Removes data from a given table based on the item id.
-        public static void RemoveTableData(string tableName, long id)
+        public static void RemoveTableData(TableNames tableName, long id)
         {
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=database.db"))
             {

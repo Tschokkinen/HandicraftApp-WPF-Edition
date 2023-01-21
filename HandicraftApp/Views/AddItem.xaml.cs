@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HandicraftApp.Enums;
 
 namespace HandicraftApp
 {
@@ -141,6 +142,37 @@ namespace HandicraftApp
                     CancelButton.Visibility = Visibility.Collapsed;
                     SaveButton.Visibility = Visibility.Visible;
                     break;
+                case "sewingPatterns":
+                    selection = buttonTag;
+                    TextBox1_Label.Content = "Kaavan malli";
+                    TextBox2_Label.Content = "Kaavojen koot";
+                    TextBox3_Label.Content = "Lisätietoja";
+                    TextBox1_Stack.Visibility = Visibility.Visible;
+                    TextBox2_Stack.Visibility = Visibility.Visible;
+                    TextBox3_Stack.Visibility = Visibility.Visible;
+                    TextBox4_Stack.Visibility = Visibility.Collapsed;
+                    TextBox_Stack.Visibility = Visibility.Visible;
+                    TypeName_Stack.Visibility = Visibility.Collapsed;
+                    BackButton.Visibility = Visibility.Visible;
+                    CancelButton.Visibility = Visibility.Collapsed;
+                    SaveButton.Visibility = Visibility.Visible;
+                    break;
+                case "sewingFabrics":
+                    selection = buttonTag;
+                    TextBox1_Label.Content = "Kankaan materiaali";
+                    TextBox2_Label.Content = "Kankaan alaluokka";
+                    TextBox3_Label.Content = "Leveys (cm)";
+                    TextBox4_Label.Content = "Korkeus (cm)";
+                    TextBox1_Stack.Visibility = Visibility.Visible;
+                    TextBox2_Stack.Visibility = Visibility.Visible;
+                    TextBox3_Stack.Visibility = Visibility.Visible;
+                    TextBox4_Stack.Visibility = Visibility.Visible;
+                    TextBox_Stack.Visibility = Visibility.Visible;
+                    TypeName_Stack.Visibility = Visibility.Collapsed;
+                    BackButton.Visibility = Visibility.Visible;
+                    CancelButton.Visibility = Visibility.Collapsed;
+                    SaveButton.Visibility = Visibility.Visible;
+                    break;
                 case "Cancel":
                     DialogResult = true;
                     break;
@@ -148,7 +180,7 @@ namespace HandicraftApp
             
         }
 
-        // NOTE TO SELF: MAKE SECTION LESS HARD CODED.
+        // NOTE TO SELF: MAKE SECTION LESS HARD CODED AND EASIER TO READ.
         private void Save()
         {
             string? textBox1;
@@ -217,6 +249,52 @@ namespace HandicraftApp
                     }
 
                     tableEntry = $"INSERT INTO sewingThreads (id, colour, optionalInfo) values (NULL, '{textBox1}', '{textBox2}')";
+                    Database.AddTableEntry(tableEntry);
+                    DialogResult = true;
+                    break;
+                case "sewingPatterns":
+                    textBox1 = TextBox1.Text.ToString();
+                    textBox2 = TextBox2.Text.ToString();
+                    textBox3 = TextBox3.Text.ToString();
+
+                    if (textBox1 == "" || textBox2 == "")
+                    {
+                        DisplayEmptyFieldMessage();
+                        return;
+                    }
+
+                    if (textBox3 == "")
+                    {
+                        textBox3 = "-";
+                    }
+
+                    tableEntry = $"INSERT INTO sewingPatterns (id, patternModel, patternSizes, optionalInfo) values (NULL, '{textBox1}', '{textBox2}', '{textBox3}')";
+                    Database.AddTableEntry(tableEntry);
+                    DialogResult = true;
+                    break;
+                case "sewingFabrics":
+                    textBox1 = TextBox1.Text.ToString();
+                    textBox2 = TextBox2.Text.ToString();
+                    textBox3 = TextBox3.Text.ToString();
+                    textBox4 = TextBox4.Text.ToString();
+
+                    if (textBox1 == "" || textBox2 == "")
+                    {
+                        DisplayEmptyFieldMessage();
+                        return;
+                    }
+
+                    if (textBox3.Contains(','))
+                    {
+                        textBox3 = textBox3.Replace(',', '.');
+                    }
+
+                    if (textBox4.Contains(','))
+                    {
+                        textBox4 = textBox4.Replace(',', '.');
+                    }
+
+                    tableEntry = $"INSERT INTO sewingFabrics (id, mainType, subType, width, height) values (NULL, '{textBox1}', '{textBox2}', {textBox3}, {textBox4})";
                     Database.AddTableEntry(tableEntry);
                     DialogResult = true;
                     break;

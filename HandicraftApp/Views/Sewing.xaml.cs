@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using HandicraftApp.Enums;
+using HandicraftApp.Models;
 
 namespace HandicraftApp
 {
@@ -42,19 +44,19 @@ namespace HandicraftApp
             {
                 case "Threads":
                     items.Clear();
-                    items = Database.GetTableData("sewingThreads", "SELECT * FROM sewingThreads");
+                    items = Database.GetTableData(TableNames.SewingThreads);
                     UpdateListBox(items);
                     SelectedLabel.Content = "Ompelulangat";
                     break;
                 case "Patterns":
                     items.Clear();
-                    items = Database.GetTableData("sewingPatterns", "SELECT * FROM sewingPatterns");
+                    items = Database.GetTableData(TableNames.SewingPatterns);
                     UpdateListBox(items);
                     SelectedLabel.Content = "Kaavat";
                     break;
                 case "Fabrics":
                     items.Clear();
-                    items = Database.GetTableData("sewingFabrics", "SELECT * FROM sewingFabrics");
+                    items = Database.GetTableData(TableNames.SewingFabrics);
                     UpdateListBox(items);
                     SelectedLabel.Content = "Kankaat";
                     break;
@@ -65,8 +67,8 @@ namespace HandicraftApp
                 case "Remove":
                     if (selected != null)
                     {
-                        //Database.RemoveTableData(selected.TableName, selected.Id);
-                        //MyItems.Remove(selected);
+                        Database.RemoveTableData(selected.TableName, selected.Id);
+                        MyItems.Remove(selected);
                     }
                     break;
                 default:

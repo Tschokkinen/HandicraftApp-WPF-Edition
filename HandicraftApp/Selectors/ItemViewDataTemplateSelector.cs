@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using HandicraftApp.Enums;
+using HandicraftApp.Models;
 
 namespace HandicraftApp
 {
@@ -17,17 +19,25 @@ namespace HandicraftApp
             {
                 Item? currentItem = item as Item;
 
-                if (currentItem.TableName == "crochetHooks")
+                if (currentItem.TableName == TableNames.CrochetHooks)
                 {
                     return element.FindResource("crochetHooksTemplate") as DataTemplate;
                 }
-                else if (currentItem.TableName == "crochetThreads")
+                else if (currentItem.TableName == TableNames.CrochetThreads)
                 {
                     return element.FindResource("crochetThreadsTemplate") as DataTemplate;
                 }
-                else if (currentItem.TableName == "sewingThreads")
+                else if (currentItem.TableName == TableNames.SewingThreads)
                 {
                     return element.FindResource("sewingThreadsTemplate") as DataTemplate;
+                }
+                else if (currentItem.TableName == TableNames.SewingPatterns)
+                {
+                    return element.FindResource("sewingPatternsTemplate") as DataTemplate;
+                }
+                else if (currentItem.TableName == TableNames.SewingFabrics)
+                {
+                    return element.FindResource("sewingFabricsTemplate") as DataTemplate;
                 }
             }
             return null;

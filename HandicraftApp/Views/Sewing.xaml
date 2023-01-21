@@ -6,7 +6,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HandicraftApp"
       mc:Ignorable="d" 
-      d:DesignHeight="350" d:DesignWidth="600"
+      d:DesignHeight="350" d:DesignWidth="800"
       Title="Käsityöhässäkkä">
     <Page.Resources>
         <local:ItemViewDataTemplateSelector x:Key="itemViewDataTemplateSelector" />
@@ -37,7 +37,7 @@
                 </StackPanel>
             </DataTemplate>
 
-            <DataTemplate x:Key="crochetThreadsTemplate">
+            <DataTemplate x:Key="sewingPatternsTemplate">
                 <StackPanel Orientation="Horizontal">
                     <Grid>
                         <Grid.ColumnDefinitions>
@@ -50,20 +50,56 @@
                         </Grid.ColumnDefinitions>
 
                         <TextBlock Grid.Column="0" Margin="5, 0, 5, 0">
-                        <Run FontWeight="Bold">Koko:</Run>
+                        <Run FontWeight="Bold">Malli:</Run>
                         </TextBlock>
-                        <TextBlock Grid.Column="1" Text="{Binding Size}" Margin="5, 0, 5, 0" />
+                        <TextBlock Grid.Column="1" Text="{Binding PatternModel}" Margin="5, 0, 5, 0" />
                         <TextBlock Grid.Column="2" Margin="5, 0, 5, 0">
-                        <Run FontWeight="Bold">Materiaali:</Run>
+                        <Run FontWeight="Bold">Koot:</Run>
                         </TextBlock>
-                        <TextBlock Grid.Column="3" Text="{Binding Material}" Margin="5, 0, 5, 0"/>
+                        <TextBlock Grid.Column="3" Text="{Binding PatternSizes}" Margin="5, 0, 5, 0"/>
                         <TextBlock Grid.Column="4" Margin="5, 0, 5, 0">
-                        <Run FontWeight="Bold">Väri:</Run>
+                        <Run FontWeight="Bold">Lisätietoja:</Run>
                         </TextBlock>
-                        <TextBlock Grid.Column="5" Text="{Binding Colour}" Margin="5, 0, 5, 0"/>
+                        <TextBlock Grid.Column="5" Text="{Binding OptionalInfo}" Margin="5, 0, 5, 0"/>
                     </Grid>
                 </StackPanel>
             </DataTemplate>
+
+            <DataTemplate x:Key="sewingFabricsTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column1" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column2" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column3" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column4" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column5" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column6" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column7" />
+                            <ColumnDefinition Width="Auto" SharedSizeGroup="Column8" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Grid.Column="0" Margin="5, 0, 5, 0">
+                        <Run FontWeight="Bold">Materiaali:</Run>
+                        </TextBlock>
+                        <TextBlock Grid.Column="1" Text="{Binding MainType}" Margin="5, 0, 5, 0" />
+                        <TextBlock Grid.Column="2" Margin="5, 0, 5, 0">
+                        <Run FontWeight="Bold">Alaluokka:</Run>
+                        </TextBlock>
+                        <TextBlock Grid.Column="3" Text="{Binding SubType}" Margin="5, 0, 5, 0"/>
+                        <TextBlock Grid.Column="4" Margin="5, 0, 5, 0">
+                        <Run FontWeight="Bold">Leveys (cm):</Run>
+                        </TextBlock>
+                        <TextBlock Grid.Column="5" Text="{Binding Width}" Margin="5, 0, 5, 0"/>
+                        <TextBlock Grid.Column="6" Margin="5, 0, 5, 0">
+                        <Run FontWeight="Bold">Korkeus (cm):</Run>
+                        </TextBlock>
+                        <TextBlock Grid.Column="7" Text="{Binding Height}" Margin="5, 0, 5, 0"/>
+                    </Grid>
+                </StackPanel>
+            </DataTemplate>
+
+
         </Grid.Resources>
 
 
